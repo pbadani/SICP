@@ -1,13 +1,13 @@
 sealed trait List[+A] {
   def isEmpty() = this == Null
 
-  def length():Int
+  def length(): Int
 }
 
 object Null extends List[Nothing] {
   override def toString: String = "[]"
 
-  override def length():Int = 0
+  override def length(): Int = 0
 }
 
 case class Cons[A](head: A, tail: List[A]) extends List[A] {
@@ -51,6 +51,7 @@ def reverseWithAccumulator[A](list: List[A]): List[A] = {
       case Cons(h, t) => iter(t, Cons(h, acc))
     }
   }
+
   iter(list, Null)
 }
 

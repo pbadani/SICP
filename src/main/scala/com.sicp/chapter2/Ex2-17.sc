@@ -6,7 +6,7 @@ def lastPair[A](list: Cons[A]): Cons[A] = {
   if (list.tail == null)
     list
   else
-      lastPair(list.tail)
+    lastPair(list.tail)
 }
 
 lastPair(a)

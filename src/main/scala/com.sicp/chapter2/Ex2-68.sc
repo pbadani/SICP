@@ -1,20 +1,14 @@
 sealed trait Tree[+A] {
-  def isLeaf(): Boolean
-
   def symbols: Seq[A]
 
   def weight: Int
 }
 
 case class Leaf[A](symbol: A, weight: Int) extends Tree[A] {
-  override def isLeaf(): Boolean = false
-
   override def symbols: Seq[A] = Seq(symbol)
 }
 
 case class NonLeaf[A](left: Tree[A], right: Tree[A]) extends Tree[A] {
-  override def isLeaf(): Boolean = false
-
   override def symbols: Seq[A] = left.symbols ++ right.symbols
 
   override def weight: Int = left.weight + right.weight

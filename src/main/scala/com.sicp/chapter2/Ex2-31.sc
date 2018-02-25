@@ -21,7 +21,7 @@ case class Leaf[A](e: A) extends Tree[A] {
 }
 
 // Head now does not hold a single value but another Cons
-case class Cons[A](head: Tree[A], tail: Tree[A]) extends Tree[A] {
+case class Cons[A](left: Tree[A], right: Tree[A]) extends Tree[A] {
   override def isEmpty(): Boolean = false
 }
 

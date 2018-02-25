@@ -32,9 +32,7 @@ def elementOfSet[A](x: A, set: Set[A]): Boolean = {
   }
 }
 
-def adjoinSet[A](x: A, set: Set[A]): Set[A] = {
-  if (elementOfSet(x, set)) set else Cons(x, set)
-}
+def adjoinSet[A](x: A, set: Set[A]): Set[A] = Cons(x, set)
 
 def intersectionSet[A](a: Set[A], b: Set[A]): Set[A] = {
   if (a.isEmpty() || b.isEmpty()) {
@@ -54,8 +52,6 @@ def unionSet[A](a: Set[A], b: Set[A]): Set[A] = {
     a
   } else {
     a match {
-      //if h is present in b, then ignore this one, take it from b
-      case Cons(h, t) if elementOfSet(h, b) => unionSet(t, b)
       case Cons(h, t) => Cons(h, unionSet(t, b))
     }
   }
@@ -68,3 +64,5 @@ elementOfSet(3, a)
 adjoinSet(5, a)
 intersectionSet(a, b)
 unionSet(a, b)
+
+//The elementOfSet check is removed from adjoinSet and unionSet which is O(1) operation

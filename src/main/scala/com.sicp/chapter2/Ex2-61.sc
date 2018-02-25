@@ -1,3 +1,6 @@
+// TODO:
+
+//Ordered Set.
 sealed trait Set[+A] {
   def isEmpty() = this == Null
 
@@ -33,7 +36,12 @@ def elementOfSet[A](x: A, set: Set[A]): Boolean = {
 }
 
 def adjoinSet[A](x: A, set: Set[A]): Set[A] = {
-  if (elementOfSet(x, set)) set else Cons(x, set)
+  //Ensure that we place the element at right position
+  set match {
+    case Null => Cons(x, Null)
+    case Cons(h, _) if (h == x) => set
+    case Cons(h, t) if (h > x) =>
+  }
 }
 
 def intersectionSet[A](a: Set[A], b: Set[A]): Set[A] = {
